@@ -70,7 +70,7 @@ public class BackupHelper {
             String filePath = file.getParent().toString(); // 파일 경로
 
             // 새로운 파일 이름 생성 (접미사 추가)
-            String newFileName = fileName.replaceFirst("(\\.[^\\.]+)$", "_" + today + "$1"); // 접미사 추가
+            String newFileName = fileName + "_" + today; // 접미사 추가
             Path newFilePath = Paths.get(filePath, newFileName); // 새로운 파일 경로
 
             // 파일 이름 변경
@@ -90,7 +90,7 @@ public class BackupHelper {
         System.out.println("[status] _yyyyMMdd형식의 예전 백업파일을 모두 삭제합니다.");
 
         // _yyyyMMdd.확장자 형식의 기존 백업파일을 찾는 정규표현식
-        Pattern pattern = Pattern.compile("_(\\d{8})\\.(\\w+)$");
+        Pattern pattern = Pattern.compile("\\.(\\w+)_\\d{8}$");
         
         // 삭제된 파일 개수
         int deletedCnt = 0;
